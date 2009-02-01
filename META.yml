@@ -1,0 +1,14 @@
+--- #YAML:1.0
+name:                MediaWiki-Bot-Plugin-SE
+version:             0.1.0
+abstract:            a plugin for MediaWiki::Bot which contains data retrieval tools for the 2009 Steward elections
+license:             gpl
+author:              
+    - Dan Collins (ST47)
+generated_by:        ExtUtils::MakeMaker version 6.42
+distribution_type:   module
+requires:     
+    MediaWiki::Bot:                1.5.2
+meta-spec:
+    url:     http://module-build.sourceforge.net/META-spec-v1.3.html
+    version: 1.3
