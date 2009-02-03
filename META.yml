@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                MediaWiki-Bot-Plugin-SE
-version:             0.1.0
+version:             0.2.0
 abstract:            a plugin for MediaWiki::Bot which contains data retrieval tools for the 2009 Steward elections
 license:             gpl
 author:              
