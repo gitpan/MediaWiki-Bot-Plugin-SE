@@ -4,7 +4,7 @@ use POSIX qw(locale_h);
 setlocale(LC_ALL, "en_US.UTF-8");
 use strict;
 
-our $VERSION = '0.2.0';
+our $VERSION = '0.2.1';
 
 =head1 NAME
 
@@ -60,9 +60,9 @@ sub se_get_stats {
 	my $op=$2;
 	my $ne=$3;
 	my ($s, $o, $n);
-	while ($su=~/\n\#[^\#\*\:]/g) {$s++}
-	while ($op=~/\n\#[^\#\*\:]/g) {$o++}
-	while ($ne=~/\n\#[^\#\*\:]/g) {$n++}
+	while ($su=~/\n\#[^\#\*\:\n]/g) {$s++}
+	while ($op=~/\n\#[^\#\*\:\n]/g) {$o++}
+	while ($ne=~/\n\#[^\#\*\:\n]/g) {$n++}
 	return ($s, $o, $n);
 }
 
@@ -106,6 +106,9 @@ sub se_check_valid {
 	$wikis{'metawiki'}=$voter;
 	my $userpage=$self->get_text("User:$voter")."\n";
 	print $userpage."\n" if $self->{debug};
+	while ($userpage=~/{[^}|]+\|:?([a-z]{2,3}):/ig) {
+		$wikis{$1 ."wiki"}=$voter;
+	}
 	while ($userpage=~/\[\[:?w?:?([a-z]{2,3}):[^\]]+?:([^\]]+?)[\|\]]/ig) {
 		$wikis{$1 ."wiki"}=$2;
 	}
